@@ -4,10 +4,13 @@ const express = require('express');
 
 const rootDir = require('../utils/path.js')
 
+const productsController = require('../controllers/products');
+
 const router = express.Router();
 
-const products = [];
 
+// avant optimisation mvc
+/*
 router.get('/add-product', (req, res, next) => {
     //si je passe ici, je ne passe pas dans le suivant parce que pas de next
     //res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
@@ -19,12 +22,13 @@ router.get('/add-product', (req, res, next) => {
         activeProducts: true
     });
 });
+*/
+//apres opti mvc
+router.get('/add-product', productsController.getAddProduct);
 
-router.post('/add-product', (req,res, next) => {
-    console.log("product added", req.body);
-    products.push({title: req.body.title})
-    res.redirect('/shop');
-});
+router.post('/add-product', productsController.postAddProduct);
 
-exports.routes = router;
-exports.products = products;
+module.exports = router;
+
+// c'est géré dans products.js (mvc update)
+// exports.products = products;

@@ -244,7 +244,7 @@ Express va prendre toutes les requetes qui cherchent un fichier et va les dirige
 
     app.set('name', 'value')
     Genre de variable globale à l'appli
-    Certains noms reservés (vies, view engine, ...)
+    Certains noms reservés (views, view engine, ...)
 
     app.set("view engine", 'pug');
     app.set('views', 'views')
@@ -362,3 +362,23 @@ dans le render côté js, on peut passer la prop layout: false, ça évite d'uti
 comme pug, supporté de base
 
 pour acceder aux props <%= prop %>
+
+on met le code js entre <% %> un peu comme php
+                    <% data.forEach(elm => { %>
+
+
+Pas de layout -> partials
+dossier includes dans les views
+
+puis <%- include('./includes/leTrucAInclure.ejs') %>
+
+
+///////////////
+//////// MVC 
+///////////////
+
+L'idée est de séparer model vue et controlleur
+Controlleur sur node, ce qui gère l'action correspondant à une route
+Views, ce qui va etre affiché
+et model, ce qui gère la data, la met en forme. Dans notre cas, c'est une classe product, qui permet de créer un produit avec un titre,
+de stocket ce produit, et de retourner tout les produits
